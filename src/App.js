@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ChatWidget from "./ChatWidget";
 
 function App() {
+  const [open, setOpen] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <button
+        style={{
+          position: "fixed", bottom: 20, right: 20, borderRadius: 50,
+          width: 60, height: 60, background: "#007bff", color: "#fff",
+          border: "none", cursor: "pointer", fontSize: 24
+        }}
+        onClick={() => setOpen(o => !o)}
+      >💬</button>
+      {open && <ChatWidget onClose={() => setOpen(false)} />}
+    </>
   );
 }
 
